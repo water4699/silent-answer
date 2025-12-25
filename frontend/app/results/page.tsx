@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import clsx from "clsx";
-import { useAccount } from "wagmi";
-import { Lock, Unlock, Trophy, Sparkles, TrendingUp } from "lucide-react";
+import { Lock, Unlock } from "lucide-react";
 import { useEncryptedSurvey } from "@/hooks/useEncryptedSurvey";
 
 function truncate(value: string) {
@@ -16,19 +14,16 @@ function truncate(value: string) {
 }
 
 export default function ResultsPage() {
-  const { address } = useAccount();
   const {
     surveyTitle,
     options,
     encryptedTallies,
     decryptedTallies,
     isOnSupportedChain,
-    contractAddress,
     message,
     isDecrypting,
     decryptTallies,
     surveyStats,
-    resultSummary,
   } = useEncryptedSurvey();
 
   const [isDecryptingState, setIsDecryptingState] = useState(false);

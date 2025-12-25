@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import clsx from "clsx";
 import { useAccount } from "wagmi";
 import { Settings, Users, Calendar, Lock, Unlock, X, CheckCircle2 } from "lucide-react";
@@ -31,7 +30,6 @@ export default function AdminPage() {
     extendDeadline,
     authorizeViewer,
     revokeViewer,
-    contractAddress,
     isOnSupportedChain,
   } = useEncryptedSurvey();
 

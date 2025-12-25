@@ -2,28 +2,17 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import clsx from "clsx";
-import { useAccount } from "wagmi";
-import { CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { useEncryptedSurvey } from "@/hooks/useEncryptedSurvey";
 
-function truncate(value: string) {
-  if (!value || value === "0x0000000000000000000000000000000000000000000000000000000000000000") {
-    return "0x0";
-  }
-  return `${value.slice(0, 8)}…${value.slice(-4)}`;
-}
-
 export default function VotePage() {
-  const { address } = useAccount();
   const {
     surveyTitle,
     surveyDescription,
     options,
     hasResponded,
     isOnSupportedChain,
-    contractAddress,
     message,
     isSubmitting,
     isBatchSubmitting,
@@ -37,7 +26,6 @@ export default function VotePage() {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<Set<number>>(new Set());
   const [isBatchMode, setIsBatchMode] = useState<boolean>(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const cardOptions = useMemo(
     () =>
@@ -62,8 +50,6 @@ export default function VotePage() {
     } else if (selectedOption !== null) {
       await submitResponse(selectedOption);
     }
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
   };
 
   return (

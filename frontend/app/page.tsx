@@ -2,9 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
 import Link from "next/link";
-import { ArrowRight, Shield, Lock, BarChart3, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Lock, BarChart3 } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { useEncryptedSurvey } from "@/hooks/useEncryptedSurvey";
 
@@ -30,8 +29,7 @@ const itemVariants = {
 };
 
 export default function Home() {
-  const { address, isConnected } = useAccount();
-  const { surveyTitle, surveyDescription, isActive, surveyStats, contractAddress, isOnSupportedChain } = useEncryptedSurvey();
+  const { surveyTitle, surveyDescription, isActive, surveyStats, isOnSupportedChain } = useEncryptedSurvey();
 
   return (
     <div className="page-transition">
