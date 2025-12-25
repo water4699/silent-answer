@@ -13,6 +13,7 @@ export default function VotePage() {
     options,
     hasResponded,
     isOnSupportedChain,
+    contractAddress,
     message,
     isSubmitting,
     isBatchSubmitting,
