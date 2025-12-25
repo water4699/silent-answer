@@ -57,7 +57,7 @@ export default function ResultsPage() {
   }, [decryptedTallies]);
 
   const hasDecrypted = decryptedTallies.some((v) => typeof v === "number");
-  const totalVotes = decryptedTallies.reduce((sum, v) => sum + (typeof v === "number" ? v : 0), 0);
+  const totalVotes = decryptedTallies.reduce((sum: number, v) => sum + (typeof v === "number" ? v : 0), 0);
 
   return (
     <div className="page-transition">
